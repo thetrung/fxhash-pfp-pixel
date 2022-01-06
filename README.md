@@ -9,7 +9,7 @@ A boilerplate to automate and ease the creation of profile picture projects on f
 
 ## Get up and running
 
-Download this generator by clicking on "Code" and then "Download ZIP" in the top part of this website.
+Download this generator by clicking on "Code" and then "Download ZIP" in the top part of this website, or by [clicking here](https://github.com/PureSpider/fxhash-pfp/archive/refs/heads/master.zip).
 
 Extract it somewhere, and find the `layers` directory inside the `public` directory. This is where you will save your layers. You do *not* need to change any other part of the project.
 
