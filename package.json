@@ -1,7 +1,7 @@
 {
-  "name": "fxhash-boilerplate-webpack",
+  "name": "fxhash-pfp",
   "version": "1.0.0",
-  "description": "a boilerplate to create a generative token on fxhash",
+  "description": "a boilerplate to create a generative profile picture token on fxhash",
   "main": "index.js",
   "author": "fxhash",
   "license": "MIT",

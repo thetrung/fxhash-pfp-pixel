@@ -1,110 +1,179 @@
-FXHASH Generative Token webpack boilerplate
+FXHASH Generative PFP Token boilerplate
 ================
 
-A boilerplate to automate and ease the creation of Generative Tokens on fxhash. This project uses [webpack](https://webpack.js.org/) and [webpack-dev-server](https://github.com/webpack/webpack-dev-server) to improve the development and deployment experience.
-
-Before diving into the development of your token, we recommend reading the [Guide to mint a Generative Token](https://fxhash.xyz/articles/guide-mint-generative-token) to get some understanding of the process.
-
-If you are looking for a simpler boilerplate, you can use the [fxhash simple boilerplate](https://github.com/fxhash/fxhash-simple-boilerplate) instead.
-
-
-# Scope of this project
-
-* provide a local environment in which you can iterate and use modern features from the javascript ecosystem
-* automate the creation of a .zip file ready to be uploaded on fxhash
-
+A boilerplate to automate and ease the creation of profile picture projects on fxhash.
 
 # How to use
 
-You will need to have [nodejs](https://nodejs.org/) installed.
+*Note:* You will need to have [nodejs](https://nodejs.org/) installed.
 
-## Installation
+## Get up and running
 
-> First, make sure that your node version is >= 14
+Download this repository by clicking on "Code" and then "Download ZIP" in the top part of this website.
 
-Clone the repository on your machine and move to the directory
-```sh
-$ git clone https://github.com/fxhash/fxhash-webpack-boilerplate.git your_folder && cd your_folder
+Extract it somewhere, and find the `layers` directory inside the `public` directory. This is where you will save your layers. You do *not* need to change any other part of the project.
+
+## Build your layers
+
+Think of the layers like a stack of transparents layered on top of each other.
+
+For each layer your project will have, generate a new directory with a name like this: `order-name`. For example: `00-base`, `01-skin`, `02-eyes`, and so on. This determines the order your layers will be "stacked" in, with `00` being all the way in the bottom of the stack, `01` on top of that, and so on.
+
+If you don't want certain layers to show up in the attribute list on fxhash, add `hide` after the order, for example `00-hide-base`.
+
+Then, in those directories, add your layer variations with chances, like this: `chance-name`. Here are some examples: `5-blue`, `15-red`, `1-orange`. The chances do *not* need to add up to 100, they are just relative to each other. A chance of `5` is half as likely to appear as a chance of `10`, but five times as likely as a chance of `1`, for example.
+
+**Important:**
+* All images need to be the *exact* same size, otherwise they will look skewed
+* All images need to be in the PNG format
+* All images need to be transparent in all spots where lower layers should be seen through
+
+Here is a complete layer structure as an example, with `hair`, `clothes` and `accessories` having custom chances, and `whiteseyes` and `clownoutline` being hidden:
+```
+public
+└── layers
+   ├── 00-background
+   |  ├── 1-beige.png
+   |  ├── 1-blue.png
+   |  ├── 1-brown.png
+   |  ├── 1-darkblue.png
+   |  ├── 1-darkpink.png
+   |  ├── 1-green.png
+   |  ├── 1-lightblue.png
+   |  ├── 1-purple.png
+   |  ├── 1-red.png
+   |  └── 1-yellow.png
+   ├── 01-hide-whiteseyes
+   |  └── 1-whiteseyes.png
+   ├── 02-skincolour
+   |  ├── 1-aqua.png
+   |  ├── 1-beige.png
+   |  ├── 1-blue.png
+   |  ├── 1-brown.png
+   |  ├── 1-gold.png
+   |  ├── 1-green.png
+   |  ├── 1-orange.png
+   |  ├── 1-pink.png
+   |  ├── 1-purple.png
+   |  └── 1-red.png
+   ├── 03-eyes
+   |  ├── 1-aqua.png
+   |  ├── 1-blue.png
+   |  ├── 1-brown.png
+   |  ├── 1-green.png
+   |  ├── 1-neon.png
+   |  ├── 1-orange.png
+   |  ├── 1-pastel.png
+   |  ├── 1-pink.png
+   |  ├── 1-purple.png
+   |  └── 1-red.png
+   ├── 04-mouths
+   |  ├── 1-aqua.png
+   |  ├── 1-darkblue.png
+   |  ├── 1-darkergreen.png
+   |  ├── 1-darkgreen.png
+   |  ├── 1-darkpurple.png
+   |  ├── 1-green.png
+   |  ├── 1-maroon.png
+   |  ├── 1-orange.png
+   |  ├── 1-purple.png
+   |  └── 1-yellow.png
+   ├── 05-teeth
+   |  ├── 1-black.png
+   |  ├── 1-brown.png
+   |  ├── 1-darkgreen.png
+   |  ├── 1-green.png
+   |  ├── 1-lilac.png
+   |  ├── 1-neon.png
+   |  ├── 1-orange.png
+   |  ├── 1-purple.png
+   |  ├── 1-red.png
+   |  └── 1-yellow.png
+   ├── 06-eyebrows
+   |  ├── 1-aqua.png
+   |  ├── 1-black.png
+   |  ├── 1-blue.png
+   |  ├── 1-darkblue.png
+   |  ├── 1-green.png
+   |  ├── 1-orange.png
+   |  ├── 1-pink.png
+   |  ├── 1-purple.png
+   |  ├── 1-red.png
+   |  └── 1-yellow.png
+   ├── 07-facepaint
+   |  ├── 1-eyeblue.png
+   |  ├── 1-eyegreen.png
+   |  ├── 1-eyered.png
+   |  ├── 1-faceblue.png
+   |  ├── 1-faceorange.png
+   |  ├── 1-facered.png
+   |  ├── 1-mouthblue.png
+   |  ├── 1-mouthorange.png
+   |  ├── 1-mouthred.png
+   |  └── 1-none.png
+   ├── 08-hide-clownoutline
+   |  └── 1-outline.png
+   ├── 09-clownnoses
+   |  ├── 1-aqua.png
+   |  ├── 1-blue.png
+   |  ├── 1-green.png
+   |  ├── 1-neon.png
+   |  ├── 1-none.png
+   |  ├── 1-orange.png
+   |  ├── 1-pastel.png
+   |  ├── 1-pink.png
+   |  ├── 1-purple.png
+   |  ├── 1-red.png
+   |  └── 1-yellow.png
+   ├── 10-hair
+   |  ├── 1-none.png
+   |  ├── 1-red.png
+   |  ├── 5-aqua.png
+   |  ├── 5-blue.png
+   |  ├── 5-darkgreen.png
+   |  ├── 5-neon.png
+   |  ├── 5-orange.png
+   |  ├── 5-pastel.png
+   |  ├── 5-pink.png
+   |  ├── 5-purple.png
+   |  └── 5-yellow.png
+   ├── 11-clothes
+   |  ├── 1-none.png
+   |  ├── 5-aqua.png
+   |  ├── 5-blue.png
+   |  ├── 5-green.png
+   |  ├── 5-lilac.png
+   |  ├── 5-neon.png
+   |  ├── 5-orange.png
+   |  ├── 5-pink.png
+   |  ├── 5-purple.png
+   |  ├── 5-red.png
+   |  └── 5-yellow.png
+   └── 12-accessories
+      ├── 1-none.png
+      ├── 10-bubblegum.png
+      ├── 10-earringcross.png
+      ├── 10-Nosering.png
+      ├── 11-textbubbleha.png
+      ├── 2-nightcap.png
+      ├── 4-pipe.png
+      ├── 5-lasereyesblue.png
+      ├── 5-lasereyesneon.png
+      ├── 5-lasereyesred.png
+      ├── 5-monocle.png
+      ├── 6-cigar.png
+      ├── 7-cigarette.png
+      └── 8-partywhistle.png
 ```
 
-Install the packages required for the local environment
-```sh
-$ npm i
-```
+## Generate your token
 
-## Start local environment
+After you have setup your layers and are happy with them, run `generate.bat` or `generate.sh`, depending on the system you are on.
 
-```sh
-$ npm start
-```
+This produces a `project.zip` file in the `dist-zipped` directory. This is the file you need to upload to fxhash to generate your token.
 
-This last command will start a local http server with [live reloading](https://webpack.js.org/configuration/dev-server/#devserverlivereload) enabled so that you can iterate faster on your projects. Open [http://localhost:8080](http://localhost:8080) to see your project in the browser.
-
-## Build
-
-```sh
-$ npm run build
-```
-
-Will bundle your js dependencies into a single minified `bundle.js` file, move your files from the `public/` to the `dist/` folder, and link the `bundle.js` with the `index.html`.
-
-**Moreover, it will create a `dist-zipped/project.zip` file which can be directly imported on fxhash**.
-
-# Develop your token
-
-Once the environment is started, you can edit the `src/index.js` file to start building your artwork. The `index.html` file is located in the `public/` folder.
-
-You can import libraries using `npm` or by adding the library file in the `public/` folder and link those using relative paths in the `index.html`.
-
-Any file in the `public/` folder will be added to the final project. 
-
-## fxhash snippet
-
-fxhash requires you to use a javascript code snippet so that the platform can inject some code when tokens will be generated from your Generative Token. The code snippet is already in the `index.html` file of this boilerplate, so you don't have to add it yourself.
-
-**During the development stages, the snippet will generate a random hash each time the page is refreshed**. This way, it helps you reproduce the conditions in which your token will be executed on fxhash.
-
-It creates 3 variables:
-- `fxhash`: a random 64 characters hexadecimal string. This particular variable will be hardcoded with a static hash when someone mints a token from your GT
-- `fxrand()`: a PRNG function that generates deterministic PRN between 0 and 1. **Simply use it instead of Math.random()**.
-
-*The index.js of this boilerplate quickly demonstrates how to use these*.
-
-## How do Generative Tokens work
-
-This is how Generative Tokens work on fxhash:
-* you upload your project to the platform (see next section)
-* you mint your project
-* when a collector will mint its unique token from your Generative Token, a random hash will be hard-coded in the **fxhash code snippet**
-* the token will now have its own `index.html` file, with a **static** hash, ensuring its immutability 
-
-The [Guide to mint a Generative Token](https://fxhash.xyz/articles/guide-mint-generative-token) give in-depth details about this process.
-
-
-# Publish your token
-
-Once you are happy with the results, you can run the following command:
-
-```sh
-$ npm run build
-```
-
-This will create a `dist-zipped/project.zip` file.
+## Publish your token
 
 Go to [https://fxhash.xyz/sandbox/](https://fxhash.xyz/sandbox/) and upload the `project.zip` file in there to see if it works properly.
 
-If your token does not work properly, you can iterate easily by updating your files, running `$ npm run build` again, and upload the zip file again.
-
-Finally, you can mint your token using the same `project.zip`file.
-
-
-# Rules to follow
-
-> Theses rules must be followed to ensure that your token will be future-proof, accepted by fxhash, and behave in the intended way
-
-* the zip file must be under 15 Mb
-* any path to a resource must be relative (./path/to/file.ext)
-* no external resources allowed, you must put all your resources in the `public/` folder (sub-folders are OK)
-* no network calls allowed (but calls to get resources from within your `public/` folder)
-* you must handle any viewport size (by implementing a response to the `resize` event of the `window`)
-* you **cannot use random number generation without a seed** (the same input hash must always yield the same output). The `fxrand` function does a very good job in that regard.
+Finally, you can mint your token using the same `project.zip` file.
