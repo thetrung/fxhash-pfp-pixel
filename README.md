@@ -15,7 +15,7 @@ Extract it somewhere, and find the `layers` directory inside the `public` direct
 
 ## Build your layers
 
-Think of the layers like a stack of transparents layers on top of each other.
+Think of the layers like a stack of transparent layers on top of each other.
 
 For each layer your project will have, generate a new directory with a name like this: `order-name`. For example: `00-base`, `01-skin`, `02-eyes`, and so on. This determines the order your layers will be "stacked" in, with `00` being all the way in the bottom of the stack, `01` on top of that, and so on.
 
