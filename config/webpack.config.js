@@ -34,7 +34,7 @@ module.exports = {
               output[dir] = [];
 
               fs.readdirSync(path.resolve(layersDir, dir))
-                .filter(file => file.endsWith('.png'))
+                .filter(file => file.toLowerCase().endsWith('.png'))
                 .forEach(file => {
                   output[dir].push(file);
                 });
