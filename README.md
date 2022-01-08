@@ -27,6 +27,7 @@ Then, in those directories, add your layer variations with a preset name, includ
 * All images need to be the *exact* same size, otherwise they will look skewed
 * All images need to be in the PNG format
 * All images need to be transparent in all spots where lower layers should be seen through
+* All images combined need to be less than 15 megabytes!
 
 Here is a complete layer structure as an example, with `hair`, `clothes` and `accessories` having custom chances, and `whiteseyes` and `clownoutline` being hidden:
 ```
