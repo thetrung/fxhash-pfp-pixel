@@ -24,6 +24,7 @@ If you don't want certain layers to show up in the attribute list on fxhash, add
 Then, in those directories, add your layer variations with a preset name, including chances, like this: `chance-name`. Here are some examples: `5-blue`, `15-red`, `1-orange`. The chances do *not* need to add up to 100, they are just relative to each other. A chance of `5` is half as likely to appear as a chance of `10`, but five times as likely as a chance of `1`, for example.
 
 **Important:**
+* Make sure to use *no* spaces in your file or folder names! If you want spaces in the attributes, use `_` instead
 * All images need to be the *exact* same size, otherwise they will look skewed
 * All images need to be in the PNG format
 * All images need to be transparent in all spots where lower layers should be seen through
