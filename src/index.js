@@ -98,11 +98,30 @@ let aspectRatio = null;
 // [https://fxhash.xyz/articles/guide-mint-generative-token#features]
 window.$fxhashFeatures = {};
 
+// https://stackoverflow.com/a/14731922/953010
+/**
+ * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
+ * images to fit into a certain area.
+ *
+ * @param {Number} srcWidth width of source image
+ * @param {Number} srcHeight height of source image
+ * @param {Number} maxWidth maximum available width
+ * @param {Number} maxHeight maximum available height
+ * @return {Object} { width, height }
+ */
+function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+  var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+
+  return { width: srcWidth * ratio, height: srcHeight * ratio };
+}
+
 function onWindowResize() {
   sideLength = Math.min(window.innerWidth, window.innerHeight);
 
-  layered.canvas.width = sideLength * aspectRatio;
-  layered.canvas.height = sideLength;
+  let ratio = calculateAspectRatioFit(aspectRatio * 100, 100, window.innerWidth, window.innerHeight);
+
+  layered.canvas.width = ratio.width;
+  layered.canvas.height = ratio.height;
 
   layered.render();
 }
