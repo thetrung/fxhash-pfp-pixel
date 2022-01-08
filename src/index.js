@@ -1,5 +1,10 @@
 const jsondata = require('../tmp/layers.json');
 
+String.replacei = String.prototype.replacei = function (rep, rby) {
+  var pos = this.toLowerCase().indexOf(rep.toLowerCase());
+  return pos == -1 ? this : this.substr(0, pos) + rby + this.substr(pos + rep.length);
+};
+
 const pick = (arr) => arr[(fxrand() * arr.length) | 0];
 
 const getWeightedOption = function (options) {
@@ -168,7 +173,7 @@ Object.keys(jsondata)
 
     let layerNameArray = key.split('-').splice(1);
     if (layerNameArray[0] != 'hide') {
-      window.$fxhashFeatures[layerNameArray.join('-').replace('.png', '').replaceAll('_', ' ')] = selected.split('-').splice(1).join('-').replace('.png', '').replaceAll('_', ' ');
+      window.$fxhashFeatures[layerNameArray.join('-').replaceAll('_', ' ')] = selected.split('-').splice(1).join('-').replacei('.png', '').replaceAll('_', ' ');
     }
   });
 
