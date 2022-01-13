@@ -89,7 +89,7 @@ layeredCanvas = function (id) {
   this.ctx2d = this.canvas.getContext('2d');
 };
 
-document.body.insertAdjacentHTML('beforeend', '<canvas id="theCanvas">');
+document.body.insertAdjacentHTML('beforeend', '<canvas id="theCanvas" width="0" height="0">');
 const layered = new layeredCanvas('theCanvas');
 
 let aspectRatio = null;
