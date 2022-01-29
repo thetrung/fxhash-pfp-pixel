@@ -132,10 +132,14 @@ function onWindowResize() {
 }
 window.addEventListener('resize', onWindowResize, false);
 
+let toLoad = 0;
+
 Object.keys(jsondata)
   .filter(key => jsondata[key].length)
   .sort((a, b) => parseInt(a.split('-')[0]) - parseInt(b.split('-')[0]))
   .forEach(key => {
+    toLoad++;
+
     let options = [];
     jsondata[key].forEach(elem => {
       // If no aspect ratio is set,
@@ -162,6 +166,11 @@ Object.keys(jsondata)
     let layer = new Image();
     layer.addEventListener('load', function () {
       layered.render();
+
+      toLoad--;
+      if (toLoad == 0) {
+        fxpreview();
+      }
     }, false);
     layer.src = './layers/' + key + '/' + selected;
 
