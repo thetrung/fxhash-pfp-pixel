@@ -138,6 +138,8 @@ Object.keys(jsondata)
   .forEach(key => {
     let options = [];
     jsondata[key].forEach(elem => {
+      // If no aspect ratio is set,
+      // use first image to determine
       if (aspectRatio == null) {
         aspectRatio = 1;
 
@@ -154,6 +156,7 @@ Object.keys(jsondata)
       options.push([elem, parseInt(elem.split('-')[0])]);
     });
 
+    // Select value for attribute
     let selected = getWeightedOption(options);
 
     let layer = new Image();
