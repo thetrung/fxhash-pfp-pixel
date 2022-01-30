@@ -25,6 +25,7 @@ Then, in those directories, add your layer variations with a preset name, includ
 
 **Important:**
 * Make sure to use *no* spaces in your file or folder names! If you want spaces in the attributes, use `_` instead
+* Emojis, question marks, and other special characters in folder or file names will not work either.
 * All images need to be the *exact* same size, otherwise they will look skewed
 * All images need to be in the PNG format
 * All images need to be transparent in all spots where lower layers should be seen through
