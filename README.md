@@ -179,3 +179,13 @@ This produces a `project.zip` file in the `dist-zipped` directory. This is the f
 Go to [https://fxhash.xyz/sandbox/](https://fxhash.xyz/sandbox/) and upload the `project.zip` file in there to see if it works properly.
 
 Finally, you can mint your token using the same `project.zip` file.
+
+The capture settings are as follows:
+<dl>
+  <dt>When will the capture module trigger?</dt>
+  <dd>Programmatic trigger using fxpreview()</dd>
+  <dt>What will be the target of the capture module?</dt>
+  <dd>From &lt;canvas&gt;</dd>
+  <dt>A CSS selector that targets the canvas on which your graphics are rendered</dt>
+  <dd>#theCanvas</dd>
+</dl>
