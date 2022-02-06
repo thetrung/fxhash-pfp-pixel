@@ -172,6 +172,7 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
 ## Generate your token
 
 After you have setup your layers and are happy with them, double click one of the included files `generate.bat` (Windows) or `generate.sh` (Mac and Linux), depending on the system you are on.
+If you are on mac or linux, you have to make the `generate.sh` file executable first.
 
 This produces a `project.zip` file in the `dist-zipped` directory. This is the file you need to upload to fxhash to generate your token.
 
