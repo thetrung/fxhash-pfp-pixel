@@ -21,7 +21,7 @@ federicojacobi.com
 Abstraction layer on canvas to mimic the use of layers
 */
 
-layeredCanvas = function (id) {
+const layeredCanvas = function (canvas) {
   this.layers = [];
 
   var extend = function (defaults, options) {
@@ -85,14 +85,35 @@ layeredCanvas = function (id) {
     });
   };
 
-  this.canvas = document.getElementById(id);
+  this.canvas = canvas;
   this.ctx2d = this.canvas.getContext('2d');
 };
 
-document.body.insertAdjacentHTML('beforeend', '<canvas id="theCanvas" width="0" height="0">');
-const layered = new layeredCanvas('theCanvas');
+const offScreen = document.createElement('canvas');
+const offScreenLayered = new layeredCanvas(offScreen);
 
-let aspectRatio = null;
+const onScreen = document.getElementById('theCanvas');
+const onScreenCtx = onScreen.getContext('2d');
+
+const dlButton = document.getElementById('download');
+
+function downloadImage() {
+  const link = document.createElement('a');
+  link.download = 'fxhash-download.png';
+  link.href = offScreen.toDataURL();
+  link.click();
+  link.delete;
+}
+
+onScreen.addEventListener('click', event => {
+  dlButton.classList.toggle("visible");
+});
+
+dlButton.addEventListener('click', event => {
+  downloadImage();
+});
+
+let imageSizeSet = null;
 
 //----------------------
 // defining features
@@ -120,15 +141,17 @@ function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
   return { width: srcWidth * ratio, height: srcHeight * ratio };
 }
 
+function render() {
+  onScreenCtx.drawImage(offScreen, 0, 0, onScreen.width, onScreen.height);
+}
+
 function onWindowResize() {
-  sideLength = Math.min(window.innerWidth, window.innerHeight);
+  let ratio = calculateAspectRatioFit(offScreen.width, offScreen.height, window.innerWidth, window.innerHeight);
 
-  let ratio = calculateAspectRatioFit(aspectRatio * 100, 100, window.innerWidth, window.innerHeight);
+  onScreen.width = ratio.width;
+  onScreen.height = ratio.height;
 
-  layered.canvas.width = ratio.width;
-  layered.canvas.height = ratio.height;
-
-  layered.render();
+  render();
 }
 window.addEventListener('resize', onWindowResize, false);
 
@@ -138,50 +161,48 @@ Object.keys(jsondata)
   .filter(key => jsondata[key].length)
   .sort((a, b) => parseInt(a.split('-')[0]) - parseInt(b.split('-')[0]))
   .forEach(key => {
-    toLoad++;
+    toLoad++; // Count each layer (not image) that has yet to be loaded
 
     let options = [];
     jsondata[key].forEach(elem => {
-      // If no aspect ratio is set,
-      // use first image to determine
-      if (aspectRatio == null) {
-        aspectRatio = 1;
-
-        let image = new Image();
-
-        image.addEventListener('load', function () {
-          aspectRatio = image.width / image.height;
-          window.dispatchEvent(new Event('resize'));
-        }, false);
-
-        image.src = './layers/' + key + '/' + elem;
-      }
-
       options.push([elem, parseInt(elem.split('-')[0])]);
     });
 
     // Select value for attribute
     let selected = getWeightedOption(options);
 
-    let layer = new Image();
-    layer.addEventListener('load', function () {
-      layered.render();
+    let selectedLayerImage = new Image();
+    selectedLayerImage.addEventListener('load', function () {
+      // If no size is set,
+      // use first image to determine
+      if (!imageSizeSet) {
+        imageSizeSet = true;
+
+        offScreen.width = selectedLayerImage.width;
+        offScreen.height = selectedLayerImage.height;
+
+        window.dispatchEvent(new Event('resize'));
+      }
+
+      offScreenLayered.render();
+      render();
 
       toLoad--;
       if (toLoad == 0) {
         fxpreview();
       }
     }, false);
-    layer.src = './layers/' + key + '/' + selected;
+    selectedLayerImage.src = './layers/' + key + '/' + selected;
 
     let layerObj = {
       id: key,
       show: true,
       render: function (canvas, ctx) {
-        ctx.drawImage(layer, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(selectedLayerImage, 0, 0, canvas.width, canvas.height);
       }
     };
-    layered.addLayer(layerObj);
+
+    offScreenLayered.addLayer(layerObj);
 
     let layerNameArray = key.split('-').splice(1);
     if (layerNameArray[0] != 'hide') {
