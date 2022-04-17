@@ -195,6 +195,10 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
       └── 🖼️ 8-partywhistle.png
 ```
 
+### Additional features
+
+Collectors can click/tap the image to make a <kbd>Download image</kbd> button appear. This lets them download the image in the original resolution, instead of the scaled presentation on the website.
+
 ## Generate your token
 
 After you have setup your layers and are happy with them, double click one of the included files `generate.bat` (Windows) or `generate.sh` (Mac and Linux), depending on the system you are on.
