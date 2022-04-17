@@ -157,6 +157,8 @@ window.addEventListener('resize', onWindowResize, false);
 
 let toLoad = 0;
 
+const regex = /\d+(-\([\w-]+\))?-(.+)/;
+
 Object.keys(jsondata)
   .filter(key => jsondata[key].length)
   .sort((a, b) => parseInt(a.split('-')[0]) - parseInt(b.split('-')[0]))
@@ -170,6 +172,38 @@ Object.keys(jsondata)
 
     // Select value for attribute
     let selected = getWeightedOption(options);
+
+    const layerOptions = {};
+
+    const r = regex.exec(key);
+    let optionString = r[1];
+    const layerName = r[2];
+
+    if (optionString) {
+      optionString = optionString.substring(2, optionString.length - 1);
+      optionArray = optionString.split('_');
+
+      for (const option of optionArray) {
+        let currOption = option.split('-');
+
+        let flag = currOption.shift();
+        let value;
+
+        if (currOption.length) {
+          value = currOption.join('-');
+        }
+
+        if (value) {
+          layerOptions[flag] = value;
+        } else {
+          layerOptions[flag] = true;
+        }
+      }
+    }
+
+    if (!layerOptions.hide) {
+      window.$fxhashFeatures[layerName] = selected.split('-').splice(1).join('-').replacei('.png', '').replaceAll('_', ' ');
+    }
 
     let selectedLayerImage = new Image();
     selectedLayerImage.addEventListener('load', function () {
@@ -198,16 +232,17 @@ Object.keys(jsondata)
       id: key,
       show: true,
       render: function (canvas, ctx) {
+        if (layerOptions.blend) {
+          ctx.globalCompositeOperation = layerOptions.blend;
+        } else {
+          ctx.globalCompositeOperation = 'source-over';
+        }
+
         ctx.drawImage(selectedLayerImage, 0, 0, canvas.width, canvas.height);
       }
     };
 
     offScreenLayered.addLayer(layerObj);
-
-    let layerNameArray = key.split('-').splice(1);
-    if (layerNameArray[0] != 'hide') {
-      window.$fxhashFeatures[layerNameArray.join('-').replaceAll('_', ' ')] = selected.split('-').splice(1).join('-').replacei('.png', '').replaceAll('_', ' ');
-    }
   });
 
 console.log(window.$fxhashFeatures);

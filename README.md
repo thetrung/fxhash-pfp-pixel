@@ -27,8 +27,6 @@ Think of the layers like a stack of transparent layers on top of each other.
 
 For each layer your project will have, generate a new directory with a name like this: `order-name`. For example: `00-base`, `01-skin`, `02-eyes`, and so on. This determines the order your layers will be "stacked" in, with `00` being all the way in the bottom of the stack, `01` on top of that, and so on.
 
-If you don't want certain layers to show up in the attribute list on fxhash, add `hide` after the order, for example `00-hide-base`.
-
 Then, in those directories, add your layer variations with a preset name, including chances, like this: `chance-name`. Here are some examples: `5-blue`, `15-red`, `1-orange`. The chances do *not* need to add up to 100, they are just relative to each other. A chance of `5` is half as likely to appear as a chance of `10`, but five times as likely as a chance of `1`, for example.
 
 **Important:**
@@ -39,7 +37,27 @@ Then, in those directories, add your layer variations with a preset name, includ
 * All images need to be transparent in all spots where lower layers should be seen through
 * The generated ZIP file needs to be less than 30 megabytes!
 
-Here is a complete layer structure as an example, with `hair`, `clothes` and `accessories` having custom chances, and `whiteseyes` and `clownoutline` being hidden:
+### Layer options
+
+There is a set of options you can use to define certain aspects of your layers, for example if they are hidden in the feature display or their blend mode.
+
+See the following table for available options and their values:
+
+| Option name | Possible values | Description
+| --- | --- | --- |
+| hide | `true`, `false`, *default: `false`* | If a layer is hidden, it will not show up in the feature list on fxhash |
+|blend| [All values listed here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation#operations), *default: `source-over`* | Sets the blend mode of this layer, much like in your picture editing program |
+
+To set these values, you need to add them to your layer names like in the following examples:
+
+| Options | Result |
+| --- | --- |
+| `hide`: `true`, `blend`: `overlay` | `00-(hide-true_blend-overlay)-layer_name` |
+| `hide`: `false`, `blend`: `destination-out` | `00-(blend-destination-out)-layer_name` |
+
+### Layer structure example
+
+Here is a complete layer structure as an example, with `hair`, `clothes` and `accessories` having custom chances, and `whiteseyes` and `clownoutline` being hidden, and `mouths` being hidden and using a custom blend mode:
 ```
 📁 public
 └── 📁 layers
@@ -54,7 +72,7 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
    |  ├── 🖼️ 1-purple.png
    |  ├── 🖼️ 1-red.png
    |  └── 🖼️ 1-yellow.png
-   ├── 📁 01-hide-whiteseyes
+   ├── 📁 01-(hide)-whiteseyes
    |  └── 🖼️ 1-whiteseyes.png
    ├── 📁 02-skincolour
    |  ├── 🖼️ 1-aqua.png
@@ -78,7 +96,7 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
    |  ├── 🖼️ 1-pink.png
    |  ├── 🖼️ 1-purple.png
    |  └── 🖼️ 1-red.png
-   ├── 📁 04-mouths
+   ├── 📁 04-(hide_blend-multiply)-mouths
    |  ├── 🖼️ 1-aqua.png
    |  ├── 🖼️ 1-darkblue.png
    |  ├── 🖼️ 1-darkergreen.png
@@ -122,7 +140,7 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
    |  ├── 🖼️ 1-mouthorange.png
    |  ├── 🖼️ 1-mouthred.png
    |  └── 🖼️ 1-none.png
-   ├── 📁 08-hide-clownoutline
+   ├── 📁 08-(hide)-clownoutline
    |  └── 🖼️ 1-outline.png
    ├── 📁 09-clownnoses
    |  ├── 🖼️ 1-aqua.png
