@@ -3,6 +3,14 @@ FXHASH PFP Token generator
 
 A boilerplate to automate and ease the creation of profile picture projects on fxhash.
 
+# Licensing
+
+[![Template license: CC BY-NC-SA 4.0](https://img.shields.io/badge/Template%20license-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Generated code license: MIT](https://img.shields.io/badge/Generated%20code%20license-MIT-lightgrey.svg)](https://mit-license.org/)
+
+The template itself is licensed as [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), you can read what this means in clear terms [on the creative commons website](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+The generated code is licensed as [MIT](https://mit-license.org/), which basically means "*do with it as you like, as long as you don't remove the original included license*". You do not need to mention that you used this template in your works, however it would be nice. Read the [linked document](https://mit-license.org/) or included `LICENSE` file for legal details.
+
 # How to use
 
 *Note:* You will need to have [nodejs](https://nodejs.org/) installed.
