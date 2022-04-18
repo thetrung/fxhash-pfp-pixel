@@ -102,7 +102,6 @@ function downloadImage() {
   link.download = 'fxhash-download.png';
   link.href = offScreen.toDataURL();
   link.click();
-  link.delete;
 }
 
 onScreen.addEventListener('click', event => {
