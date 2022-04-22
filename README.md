@@ -29,13 +29,14 @@ For each layer your project will have, generate a new directory with a name like
 
 Then, in those directories, add your layer variations with a preset name, including chances, like this: `chance-name`. Here are some examples: `5-blue`, `15-red`, `1-orange`. The chances do *not* need to add up to 100, they are just relative to each other. A chance of `5` is half as likely to appear as a chance of `10`, but five times as likely as a chance of `1`, for example.
 
-**Important:**
+### **Important notes**
 * Make sure to use *no* spaces in your file or folder names! If you want spaces in the attributes, use `_` instead
 * Emojis, question marks, and other special characters in folder or file names will not work either.
 * All images need to be the *exact* same size, otherwise they will look skewed
 * All images need to be in the PNG format
 * All images need to be transparent in all spots where lower layers should be seen through
 * The generated ZIP file needs to be less than 30 megabytes!
+* Clearly mark your project as a layered composition, either in the description or by using the <kbd>Image composition</kbd> tag - ideally both!
 
 ### Layer options
 
