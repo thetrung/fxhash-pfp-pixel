@@ -9,7 +9,7 @@ A boilerplate to automate and ease the creation of profile picture projects on f
 
 The template itself is licensed as [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), you can read what this means in clear terms [on the creative commons website](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-The generated code is licensed as [MIT](https://mit-license.org/), which basically means "*do with it as you like, as long as you don't remove the original included license*". You do not need to mention that you used this template in your works, however it would be nice if you did - and it would be even nicer if you added me with a 1% royalty split, or similar. Read the [linked document](https://mit-license.org/) or included `LICENSE` file for legal details.
+The generated code is licensed as [MIT](https://mit-license.org/), which basically means "*do with it as you like, as long as you don't remove the original included license*". You do not need to mention that you used this template in your works, however it would be nice if you did - and it would be even nicer if you added me with a 1% primary split, or similar. Read the [linked document](https://mit-license.org/) or included `LICENSE` file for legal details.
 
 # How to use
 
