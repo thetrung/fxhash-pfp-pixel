@@ -141,6 +141,7 @@ function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
 }
 
 function render() {
+  onScreenCtx.imageSmoothingEnabled = false;
   onScreenCtx.drawImage(offScreen, 0, 0, onScreen.width, onScreen.height);
 }
 
