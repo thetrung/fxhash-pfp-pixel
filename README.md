@@ -58,7 +58,7 @@ To set these values, you need to add them to your layer names like in the follow
 
 ### Layer structure example
 
-Here is a complete layer structure as an example, with `hair`, `clothes` and `accessories` having custom chances, and `whiteseyes` and `clownoutline` being hidden, and `mouths` being hidden and using a custom blend mode:
+Here is a complete layer structure as an example, with `clothes` and `accessories` having custom chances, and `whiteseyes` being hidden, and `mouths` being hidden and using a custom blend mode:
 ```
 📁 public
 └── 📁 layers
@@ -86,17 +86,6 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
    |  ├── 🖼️ 1-pink.png
    |  ├── 🖼️ 1-purple.png
    |  └── 🖼️ 1-red.png
-   ├── 📁 03-eyes
-   |  ├── 🖼️ 1-aqua.png
-   |  ├── 🖼️ 1-blue.png
-   |  ├── 🖼️ 1-brown.png
-   |  ├── 🖼️ 1-green.png
-   |  ├── 🖼️ 1-neon.png
-   |  ├── 🖼️ 1-orange.png
-   |  ├── 🖼️ 1-pastel.png
-   |  ├── 🖼️ 1-pink.png
-   |  ├── 🖼️ 1-purple.png
-   |  └── 🖼️ 1-red.png
    ├── 📁 04-(hide_blend-multiply)-mouths
    |  ├── 🖼️ 1-aqua.png
    |  ├── 🖼️ 1-darkblue.png
@@ -108,66 +97,7 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
    |  ├── 🖼️ 1-orange.png
    |  ├── 🖼️ 1-purple.png
    |  └── 🖼️ 1-yellow.png
-   ├── 📁 05-teeth
-   |  ├── 🖼️ 1-black.png
-   |  ├── 🖼️ 1-brown.png
-   |  ├── 🖼️ 1-darkgreen.png
-   |  ├── 🖼️ 1-green.png
-   |  ├── 🖼️ 1-lilac.png
-   |  ├── 🖼️ 1-neon.png
-   |  ├── 🖼️ 1-orange.png
-   |  ├── 🖼️ 1-purple.png
-   |  ├── 🖼️ 1-red.png
-   |  └── 🖼️ 1-yellow.png
-   ├── 📁 06-eyebrows
-   |  ├── 🖼️ 1-aqua.png
-   |  ├── 🖼️ 1-black.png
-   |  ├── 🖼️ 1-blue.png
-   |  ├── 🖼️ 1-darkblue.png
-   |  ├── 🖼️ 1-green.png
-   |  ├── 🖼️ 1-orange.png
-   |  ├── 🖼️ 1-pink.png
-   |  ├── 🖼️ 1-purple.png
-   |  ├── 🖼️ 1-red.png
-   |  └── 🖼️ 1-yellow.png
-   ├── 📁 07-facepaint
-   |  ├── 🖼️ 1-eyeblue.png
-   |  ├── 🖼️ 1-eyegreen.png
-   |  ├── 🖼️ 1-eyered.png
-   |  ├── 🖼️ 1-faceblue.png
-   |  ├── 🖼️ 1-faceorange.png
-   |  ├── 🖼️ 1-facered.png
-   |  ├── 🖼️ 1-mouthblue.png
-   |  ├── 🖼️ 1-mouthorange.png
-   |  ├── 🖼️ 1-mouthred.png
-   |  └── 🖼️ 1-none.png
-   ├── 📁 08-(hide)-clownoutline
-   |  └── 🖼️ 1-outline.png
-   ├── 📁 09-clownnoses
-   |  ├── 🖼️ 1-aqua.png
-   |  ├── 🖼️ 1-blue.png
-   |  ├── 🖼️ 1-green.png
-   |  ├── 🖼️ 1-neon.png
-   |  ├── 🖼️ 1-none.png
-   |  ├── 🖼️ 1-orange.png
-   |  ├── 🖼️ 1-pastel.png
-   |  ├── 🖼️ 1-pink.png
-   |  ├── 🖼️ 1-purple.png
-   |  ├── 🖼️ 1-red.png
-   |  └── 🖼️ 1-yellow.png
-   ├── 📁 10-hair
-   |  ├── 🖼️ 1-none.png
-   |  ├── 🖼️ 1-red.png
-   |  ├── 🖼️ 5-aqua.png
-   |  ├── 🖼️ 5-blue.png
-   |  ├── 🖼️ 5-darkgreen.png
-   |  ├── 🖼️ 5-neon.png
-   |  ├── 🖼️ 5-orange.png
-   |  ├── 🖼️ 5-pastel.png
-   |  ├── 🖼️ 5-pink.png
-   |  ├── 🖼️ 5-purple.png
-   |  └── 🖼️ 5-yellow.png
-   ├── 📁 11-clothes
+   ├── 📁 07-clothes
    |  ├── 🖼️ 1-none.png
    |  ├── 🖼️ 5-aqua.png
    |  ├── 🖼️ 5-blue.png
@@ -179,7 +109,7 @@ Here is a complete layer structure as an example, with `hair`, `clothes` and `ac
    |  ├── 🖼️ 5-purple.png
    |  ├── 🖼️ 5-red.png
    |  └── 🖼️ 5-yellow.png
-   └── 📁 12-accessories
+   └── 📁 08-accessories
       ├── 🖼️ 1-none.png
       ├── 🖼️ 10-bubblegum.png
       ├── 🖼️ 10-earringcross.png
@@ -202,10 +132,11 @@ Collectors can click/tap the image to make a <kbd>Download image</kbd> button ap
 
 ## Generate your token
 
-After you have setup your layers and are happy with them, double click one of the included files `generate.bat` (Windows) or `generate.sh` (Mac and Linux), depending on the system you are on.
-If you are on mac or linux, you have to make the `generate.sh` file executable first.
+After you have setup your layers and are happy with them, double click one of the included files:
+ > `generate.bat` (Windows)
+ > `generate.sh` (Mac and Linux)
 
-This produces a `project.zip` file in the `dist-zipped` directory. This is the file you need to upload to fxhash to generate your token.
+This produces a `project.zip` file in the `dist-zipped` directory, upload it to fxhash to generate your token.
 
 ## Publish your token
 
