@@ -3,6 +3,8 @@ FXHASH PFP Token generator
 
 A boilerplate to automate and ease the creation of profile picture projects on fxhash.
 
+*Note:* this is modified version by [@thetrung](https://github.com/thetrung) to use specifically for pixel art, may not work as intended for other digital art.
+
 # Licensing
 
 [![Template license: CC BY-NC-SA 4.0](https://img.shields.io/badge/Template%20license-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Generated code license: MIT](https://img.shields.io/badge/Generated%20code%20license-MIT-lightgrey.svg)](https://mit-license.org/)
@@ -17,9 +19,12 @@ The generated code is licensed as [MIT](https://mit-license.org/), which basical
 
 ## Get up and running
 
-Download this generator by clicking on "Code" and then "Download ZIP" in the top part of this website, or by [clicking here](https://github.com/PureSpider/fxhash-pfp/archive/refs/heads/master.zip).
+[> Download zipped file <](https://github.com/thetrung/fxhash-pfp-pixel/archive/refs/heads/master.zip)
 
-Extract it somewhere, and find the `layers` directory inside the `public` directory. This is where you will save your layers. You do *not* need to change any other part of the project.
+Extract it somewhere, and find the `layers` directory inside the `public` directory. 
+This is where you will save your layers. 
+
+*Note:* **You do *not* need to change any other part of the project.**
 
 ## Build your layers
 
